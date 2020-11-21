@@ -18,8 +18,8 @@ const [isdisable2,setisdisable2] = useState(false);
 const nextClick = ()=>{
   if( value <= length){
      
-    if(value===3){
-          setisdisable2 (true);
+    if(value=== length-1){
+         setisdisable2 (true);
     }else{
       setisdisable2 (false);
       setisdisable1 (false);
