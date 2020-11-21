@@ -1,11 +1,93 @@
-import React, {Component, useState} from "react";
-import '../styles/App.css';
+import React, { Component, useState } from "react";
+import "../styles/App.css";
 
-const App = () => {
+
+let value = 0;
+const App = (props) => {
+  
+let  length = props.slides.length;
+
+  const [title,settitle ]  = useState(props.slides[value].title);
+
+  const [text,settext ]  = useState(props.slides[value].text);
+const [isdisable1,setisdisable1] = useState(true);
+const [isdisable2,setisdisable2] = useState(false);
+
+
+  // const title1 = props.slides[2].title;
+  // const  text1 = props.slides[2].text;
+ 
+  
+  // let next = document.getElementById("next");
+  // let prev = document.getElementById("prev");
+  
+
+    const nextClick = ()=>{
+      if( value <= length){
+     
+if(value===3){
+
+  setisdisable2 (true);
+
+
+
+// return;
+}else{
+  setisdisable2 (false);
+  setisdisable1 (false);
+  }
+// prev.setAttribute("disabled",false);
+
+      value +=1;
+      console.log("nextclick",value);
+      settitle(props.slides[value].title);
+      settext(props.slides[value].text);
+    };
+  }
+    const prevClick = ()=>{
+      if( value>=1 &&value <= length){
+    
+      if(value===1){
+        setisdisable1 (true);
+        
+        }else{
+          setisdisable1 (false);
+          setisdisable2 (false);
+        }
+     
+      value -=1;
+      console.log("preClick",value);
+      settitle(props.slides[value].title);
+      settext(props.slides[value].text);
+    };
+  }
+
+
+    const restartClick = ()=>{
+      console.log("resertClick",value);
+      settitle(props.slides[0].title);
+      settext(props.slides[0].text);
+      setisdisable1 (true);
+      setisdisable2 (false);
+      value=0;
+
+    };
+    
+
+
+
+ 
   return (
-    <></>
-  )
-}
+   <>
+        <h1 data-testid="title">{title}</h1>
+        <p data-testid="text">{text}</p>
 
+        <button id="prev" data-testid="button-prev" disabled={isdisable1} onClick = {prevClick}>Prev</button>
+
+        <button id="next" data-testid="button-next" disabled={isdisable2} onClick={nextClick}>Next</button>
+        
+        <button  id ="resert" data-testid="button-next" onClick={restartClick}>Restart</button>
+  </>
+  )};
 
 export default App;
