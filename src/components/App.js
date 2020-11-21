@@ -74,7 +74,7 @@ const nextClick = ()=>{
 
         <button id="next" data-testid="button-next" disabled={isdisable2} onClick={nextClick}>Next</button>
         
-        <button  id ="resert" data-testid="button-next" onClick={restartClick}>Restart</button>
+        <button  id ="resert" data-testid="button-next" disabled={value===0?true:false} onClick={restartClick}>Restart</button>
   </>
   )};
 
