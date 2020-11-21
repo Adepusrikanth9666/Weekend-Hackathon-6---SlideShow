@@ -12,6 +12,7 @@ const App = (props) => {
   const [isdisable2, setisdisable2] = useState(false);
 
   const nextClick = () => {
+    value += 1;
     if (value <= length) {
       if (value === length - 1) {
         setisdisable2(true);
@@ -20,13 +21,14 @@ const App = (props) => {
         setisdisable1(false);
       }
 
-      value += 1;
+     
       console.log("nextclick", value);
       settitle(props.slides[value].title);
       settext(props.slides[value].text);
     }
   };
   const prevClick = () => {
+    value -= 1;
     if (value >= 1 && value <= length) {
       if (value === 1) {
         setisdisable1(true);
@@ -35,7 +37,7 @@ const App = (props) => {
         setisdisable2(false);
       }
 
-      value -= 1;
+    
       console.log("preClick", value);
       settitle(props.slides[value].title);
       settext(props.slides[value].text);
