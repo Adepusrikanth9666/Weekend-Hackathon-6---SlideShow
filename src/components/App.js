@@ -10,22 +10,11 @@ const App = (props) => {
   const [title, settitle] = useState(props.slides[value].title);
 
   const [text, settext] = useState(props.slides[value].text);
-  const [isdisable1, setisdisable1] = useState(true);
-  const [isdisable2, setisdisable2] = useState(false);
-
 
   const nextClick = () => {
     value += 1;
-    
 
-    if (value <= length|| length === 1) {
-      if (value === length - 1) {
-        setisdisable2(true);
-      } else {
-        setisdisable2(false);
-        setisdisable1(false);
-      }
-
+    if (value <= length || length === 1) {
       console.log("nextclick", value);
       settitle(props.slides[value].title);
       settext(props.slides[value].text);
@@ -34,13 +23,6 @@ const App = (props) => {
   const prevClick = () => {
     value -= 1;
     if (value >= 0 && value <= length) {
-      if (value === 0) {
-        setisdisable1(true);
-      } else {
-        setisdisable1(false);
-        setisdisable2(false);
-      }
-
       console.log("preClick", value);
       settitle(props.slides[value].title);
       settext(props.slides[value].text);
@@ -51,8 +33,6 @@ const App = (props) => {
     console.log("resertClick", value);
     settitle(props.slides[0].title);
     settext(props.slides[0].text);
-    setisdisable1(true);
-    setisdisable2(false);
     value = 0;
   };
 
@@ -64,7 +44,7 @@ const App = (props) => {
       <button
         id="prev"
         data-testid="button-prev"
-        disabled={isdisable1}
+        disabled={value === 0 ? true : false}
         onClick={prevClick}
       >
         Prev
@@ -73,7 +53,7 @@ const App = (props) => {
       <button
         id="next"
         data-testid="button-next"
-        disabled={value===length-1?true:false}
+        disabled={value === length - 1 ? true : false}
         onClick={nextClick}
       >
         Next
