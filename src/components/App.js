@@ -9,43 +9,31 @@ let  length = props.slides.length;
 
   const [title,settitle ]  = useState(props.slides[value].title);
 
-  const [text,settext ]  = useState(props.slides[value].text);
+const [text,settext ]  = useState(props.slides[value].text);
 const [isdisable1,setisdisable1] = useState(true);
 const [isdisable2,setisdisable2] = useState(false);
 
-
-  // const title1 = props.slides[2].title;
-  // const  text1 = props.slides[2].text;
- 
-  
-  // let next = document.getElementById("next");
-  // let prev = document.getElementById("prev");
   
 
-    const nextClick = ()=>{
-      if( value <= length){
+const nextClick = ()=>{
+  if( value <= length){
      
-if(value===3){
+    if(value===3){
+          setisdisable2 (true);
+    }else{
+      setisdisable2 (false);
+      setisdisable1 (false);
+    }
 
-  setisdisable2 (true);
+  value +=1;
+  console.log("nextclick",value);
+  settitle(props.slides[value].title);
+  settext(props.slides[value].text);
+  };
 
-
-
-// return;
-}else{
-  setisdisable2 (false);
-  setisdisable1 (false);
   }
-// prev.setAttribute("disabled",false);
-
-      value +=1;
-      console.log("nextclick",value);
-      settitle(props.slides[value].title);
-      settext(props.slides[value].text);
-    };
-  }
-    const prevClick = ()=>{
-      if( value>=1 &&value <= length){
+  const prevClick = ()=>{
+    if( value>=1 &&value <= length){
     
       if(value===1){
         setisdisable1 (true);
