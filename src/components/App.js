@@ -18,7 +18,7 @@ const App = (props) => {
     value += 1;
     
 
-    if (value <= length || length === 1) {
+    if (value <= length|| length === 1) {
       if (value === length - 1) {
         setisdisable2(true);
       } else {
@@ -73,7 +73,7 @@ const App = (props) => {
       <button
         id="next"
         data-testid="button-next"
-        disabled={isdisable2}
+        disabled={value===length-1?true:false}
         onClick={nextClick}
       >
         Next
